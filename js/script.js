@@ -153,22 +153,6 @@ let seeNextImg = () => {
 
 nextButton.addEventListener('click', seeNextImg)
 
-/*  galleryImages[currentActiveIndex].classList.remove('d-block');
- imagesTitles[currentActiveIndex].classList.remove('d-block');
- thumbImages[currentActiveIndex].classList.remove('active');
- 
- currentActiveIndex++;
- 
- // CONDIZIONE PER IL LOOP
- 
- if (currentActiveIndex === galleryImages.length) {
-     currentActiveIndex = 0;
- 
- }
- 
- galleryImages[currentActiveIndex].classList.add('d-block');
- imagesTitles[currentActiveIndex].classList.add('d-block');
- thumbImages[currentActiveIndex].classList.add('active'); */
 
 // LOGICA AL CLICK PER IL PREV
 
@@ -193,30 +177,48 @@ let seePrevImg = () => {
 
 prevButton.addEventListener('click', seePrevImg)
 
-/*
-{
-     galleryImages[currentActiveIndex].classList.remove('d-block');
-    imagesTitles[currentActiveIndex].classList.remove('d-block');
-    thumbImages[currentActiveIndex].classList.remove('active');
 
-    currentActiveIndex--;
-
-    // CONDIZIONE PER IL LOOP
-
-    if (currentActiveIndex < 0) {
-        currentActiveIndex = galleryImages.length - 1;
-
-    }
-
-    galleryImages[currentActiveIndex].classList.add('d-block');
-    imagesTitles[currentActiveIndex].classList.add('d-block');
-    thumbImages[currentActiveIndex].classList.add('active');
-
-
-}) */
 
 // FUNZIONE DI AUTOPLAY
 
-setInterval(seeNextImg, 3000);
+//setInterval(seeNextImg, 3000);
+
+
+// FUNZIONE START AND STOP WITH BUTTONS
+
+// PRENDO IL BOTTONE START STOP
+const playStopBtn = document.getElementById('button-play-stop');
+
+
+
+// DICHIARO LE VARIABILI DI APPOGGIO
+
+let imgCarousel;
+let isClicked = true;
+
+// AGGIUNGO L'EVENTO AL CLICK DEL BOTTONE
+
+playStopBtn.addEventListener('click', () => {
+    if (isClicked) {
+        playStopBtn.innerHTML = `<i class="fa-solid fa-stop"></i>`
+        imgCarousel = setInterval(seeNextImg, 3000);
+
+
+    } else {
+        playStopBtn.innerHTML = `<i class="fa-solid fa-play"></i >`
+        clearInterval(imgCarousel)
+    }
+    isClicked = !isClicked
+
+
+
+
+
+
+
+
+})
+
+
 
 

@@ -46,7 +46,7 @@ Aggiungere bottoni di start/stop e di inversione del meccanismo di autoplay.
 
 
 
-
+// PRENDO L ARRAY DI OGGETTI
 
 
 
@@ -85,3 +85,82 @@ const images = [
     },
 ];
 
+// PRENDO GLI ELEMENTI HTML 
+const prevButton = document.getElementById('button-prev');
+const nextButton = document.getElementById('button-next');
+const carousel = document.getElementById('carousel');
+const gallery = document.getElementById('gallery');
+
+
+// CREO L' ELENCO DELLE IMMAGINI DENTRO LA GALLERY
+console.table(images)
+
+let img = '';
+let text = '';
+images.forEach((image) => {
+    const { url, title, description } = image;
+    img += `<img src ="${url}" alt ="img ${title}">`;
+    text += `
+    <div class="overlay">
+        <h2>${title}</h2>
+            <span>${description}</span>
+    </div>`
+
+
+})
+gallery.innerHTML = img + text
+
+
+// PRENDO GLI ELEMENTI APPENA CREATI
+
+const galleryImages = document.querySelectorAll('#carousel img');
+const imagesTitles = document.querySelectorAll('#gallery .overlay')
+
+// IMPOSTO UNO STATUS 0
+
+let currentActiveIndex = 0;
+
+galleryImages[currentActiveIndex].classList.add('d-block');
+imagesTitles[currentActiveIndex].classList.add('d-block');
+
+// LOGICA AL CLICK NEXT
+
+nextButton.addEventListener('click', function () {
+
+    galleryImages[currentActiveIndex].classList.remove('d-block');
+    imagesTitles[currentActiveIndex].classList.remove('d-block');
+
+    currentActiveIndex++;
+
+    // CONDIZIONE PER IL LOOP
+
+    if (currentActiveIndex === galleryImages.length) {
+        currentActiveIndex = 0;
+
+    }
+
+    galleryImages[currentActiveIndex].classList.add('d-block');
+    imagesTitles[currentActiveIndex].classList.add('d-block');
+})
+
+// LOGICA AL CLICK PER IL PREV
+
+prevButton.addEventListener('click', function () {
+
+    galleryImages[currentActiveIndex].classList.remove('d-block');
+    imagesTitles[currentActiveIndex].classList.remove('d-block');
+
+    currentActiveIndex--;
+
+    // CONDIZIONE PER IL LOOP
+
+    if (currentActiveIndex < 0) {
+        currentActiveIndex = galleryImages.length - 1;
+
+    }
+
+    galleryImages[currentActiveIndex].classList.add('d-block');
+    imagesTitles[currentActiveIndex].classList.add('d-block');
+
+
+})

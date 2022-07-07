@@ -131,8 +131,7 @@ thumbImages[currentActiveIndex].classList.add('active');
 
 // LOGICA AL CLICK NEXT
 
-nextButton.addEventListener('click', function () {
-
+let seeNextImg = () => {
     galleryImages[currentActiveIndex].classList.remove('d-block');
     imagesTitles[currentActiveIndex].classList.remove('d-block');
     thumbImages[currentActiveIndex].classList.remove('active');
@@ -149,13 +148,54 @@ nextButton.addEventListener('click', function () {
     galleryImages[currentActiveIndex].classList.add('d-block');
     imagesTitles[currentActiveIndex].classList.add('d-block');
     thumbImages[currentActiveIndex].classList.add('active');
-})
+
+}
+
+nextButton.addEventListener('click', seeNextImg)
+
+/*  galleryImages[currentActiveIndex].classList.remove('d-block');
+ imagesTitles[currentActiveIndex].classList.remove('d-block');
+ thumbImages[currentActiveIndex].classList.remove('active');
+ 
+ currentActiveIndex++;
+ 
+ // CONDIZIONE PER IL LOOP
+ 
+ if (currentActiveIndex === galleryImages.length) {
+     currentActiveIndex = 0;
+ 
+ }
+ 
+ galleryImages[currentActiveIndex].classList.add('d-block');
+ imagesTitles[currentActiveIndex].classList.add('d-block');
+ thumbImages[currentActiveIndex].classList.add('active'); */
 
 // LOGICA AL CLICK PER IL PREV
 
-prevButton.addEventListener('click', function () {
-
+let seePrevImg = () => {
     galleryImages[currentActiveIndex].classList.remove('d-block');
+    imagesTitles[currentActiveIndex].classList.remove('d-block');
+    thumbImages[currentActiveIndex].classList.remove('active');
+
+    currentActiveIndex--;
+
+    // CONDIZIONE PER IL LOOP
+
+    if (currentActiveIndex < 0) {
+        currentActiveIndex = galleryImages.length - 1;
+
+    }
+
+    galleryImages[currentActiveIndex].classList.add('d-block');
+    imagesTitles[currentActiveIndex].classList.add('d-block');
+    thumbImages[currentActiveIndex].classList.add('active');
+}
+
+prevButton.addEventListener('click', seePrevImg)
+
+/*
+{
+     galleryImages[currentActiveIndex].classList.remove('d-block');
     imagesTitles[currentActiveIndex].classList.remove('d-block');
     thumbImages[currentActiveIndex].classList.remove('active');
 
@@ -173,4 +213,10 @@ prevButton.addEventListener('click', function () {
     thumbImages[currentActiveIndex].classList.add('active');
 
 
-})
+}) */
+
+// FUNZIONE DI AUTOPLAY
+
+setInterval(seeNextImg, 3000);
+
+

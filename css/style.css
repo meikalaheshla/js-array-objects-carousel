@@ -30,8 +30,23 @@
     /* display: none; */
     object-fit: cover;
     border-radius: 20px;
+    position: relative;
 
 
+}
+
+
+
+#gallery .overlay {
+    text-shadow: #000001;
+
+    padding: 20px;
+    text-align: justify;
+    color: white;
+    position: absolute;
+    top: 30px;
+    left: 0px;
+    /* background-color: #0000012f; */
 }
 
 /* THUMBNAIL */

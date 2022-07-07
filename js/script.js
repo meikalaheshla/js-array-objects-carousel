@@ -108,7 +108,8 @@ images.forEach((image) => {
 
 
 })
-gallery.innerHTML = img + text
+gallery.innerHTML = img + text;
+thumbnails.innerHTML = img;
 
 
 // PRENDO GLI ELEMENTI APPENA CREATI
@@ -116,12 +117,17 @@ gallery.innerHTML = img + text
 const galleryImages = document.querySelectorAll('#carousel img');
 const imagesTitles = document.querySelectorAll('#gallery .overlay')
 
+// AGGIUNGO LA THUMBNAIL
+const thumbImages = document.querySelectorAll('#thumbnails img')
+
+
 // IMPOSTO UNO STATUS 0
 
 let currentActiveIndex = 0;
 
 galleryImages[currentActiveIndex].classList.add('d-block');
 imagesTitles[currentActiveIndex].classList.add('d-block');
+thumbImages[currentActiveIndex].classList.add('active');
 
 // LOGICA AL CLICK NEXT
 
@@ -129,6 +135,7 @@ nextButton.addEventListener('click', function () {
 
     galleryImages[currentActiveIndex].classList.remove('d-block');
     imagesTitles[currentActiveIndex].classList.remove('d-block');
+    thumbImages[currentActiveIndex].classList.remove('active');
 
     currentActiveIndex++;
 
@@ -141,6 +148,7 @@ nextButton.addEventListener('click', function () {
 
     galleryImages[currentActiveIndex].classList.add('d-block');
     imagesTitles[currentActiveIndex].classList.add('d-block');
+    thumbImages[currentActiveIndex].classList.add('active');
 })
 
 // LOGICA AL CLICK PER IL PREV
@@ -149,6 +157,7 @@ prevButton.addEventListener('click', function () {
 
     galleryImages[currentActiveIndex].classList.remove('d-block');
     imagesTitles[currentActiveIndex].classList.remove('d-block');
+    thumbImages[currentActiveIndex].classList.remove('active');
 
     currentActiveIndex--;
 
@@ -161,6 +170,7 @@ prevButton.addEventListener('click', function () {
 
     galleryImages[currentActiveIndex].classList.add('d-block');
     imagesTitles[currentActiveIndex].classList.add('d-block');
+    thumbImages[currentActiveIndex].classList.add('active');
 
 
 })

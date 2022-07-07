@@ -136,6 +136,8 @@ let seeNextImg = () => {
     imagesTitles[currentActiveIndex].classList.remove('d-block');
     thumbImages[currentActiveIndex].classList.remove('active');
 
+
+
     currentActiveIndex++;
 
     // CONDIZIONE PER IL LOOP
@@ -160,6 +162,8 @@ let seePrevImg = () => {
     galleryImages[currentActiveIndex].classList.remove('d-block');
     imagesTitles[currentActiveIndex].classList.remove('d-block');
     thumbImages[currentActiveIndex].classList.remove('active');
+
+
 
     currentActiveIndex--;
 
@@ -188,36 +192,47 @@ prevButton.addEventListener('click', seePrevImg)
 
 // PRENDO IL BOTTONE START STOP
 const playStopBtn = document.getElementById('button-play-stop');
+const backWardBtn = document.getElementById('button-rewind')
 
 
 
 // DICHIARO LE VARIABILI DI APPOGGIO
 
 let imgCarousel;
-let isClicked = true;
+let isClicked = false;
 
 // AGGIUNGO L'EVENTO AL CLICK DEL BOTTONE
 
 playStopBtn.addEventListener('click', () => {
-    if (isClicked) {
+    if (!isClicked) {
+        clearInterval(imgCarousel)
         playStopBtn.innerHTML = `<i class="fa-solid fa-stop"></i>`
         imgCarousel = setInterval(seeNextImg, 3000);
+        console.log(isClicked)
 
 
     } else {
         playStopBtn.innerHTML = `<i class="fa-solid fa-play"></i >`
         clearInterval(imgCarousel)
+        console.log(isClicked)
     }
     isClicked = !isClicked
+})
 
 
+// AGGIUNGO L'EVENTO DEL BACKWARD CHE FA CAMBIARE ANCHE IL TASTO START E STOP PER MERMETTERE DI ARRESTARE ANCHE IL COCLO OPPOSTO
 
+backWardBtn.addEventListener('click', () => {
 
-
-
+    isClicked = true;
+    clearInterval(imgCarousel)
+    playStopBtn.innerHTML = `<i class="fa-solid fa-stop"></i>`
+    imgCarousel = setInterval(seePrevImg, 3000);
+    console.log(isClicked)
 
 
 })
+
 
 
 

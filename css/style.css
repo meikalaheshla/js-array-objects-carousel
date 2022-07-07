@@ -21,7 +21,7 @@
     width: 100%;
     height: 500px;
     text-align: center;
-    position: relative;
+    /* position: relative; */
 
 }
 
@@ -87,9 +87,15 @@
     top: 101%;
     background-color: white;
     box-shadow: 0 0 10px black;
+}
 
+#button-rewind {
+    position: absolute;
 
-
+    top: 101%;
+    right: 35%;
+    background-color: white;
+    box-shadow: 0 0 10px black;
 
 }
 
@@ -99,5 +105,3 @@
     box-shadow: 0 0 10px blue;
     filter: grayscale(0);
 }
-
-.clicked {}
